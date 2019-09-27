@@ -1,14 +1,20 @@
 <template>
-<div  class="container">
-  <div class="toolbar">
-    <button class="btn btn-default" @click="compile">Compile Vue Template w/ Holdify >></button>
-  </div>
-  <div class="row code-area-row">
-    <div class="col-lg-6">
-      <codemirror class="code-area" v-model="origin" :options="htmlOption"></codemirror>
+<div>
+  <div class="header">
+    <h2>{{examples[currentIndex].title}}</h2>
+    <div class="index-row">
+      <a v-for="(example, index) in examples" :key="example.title" @click="load(index)">{{ index }}</a>
     </div>
-    <div class="col-lg-6">
-      <codemirror class="code-area" v-model="compiled" :options="jsOption"></codemirror>
+  </div>
+  <div class="code-row">
+    <div class="code-col">
+      <codemirror v-model="template" :options="htmlOption"></codemirror>
+    </div>
+    <div class="button-col">
+      <button class="btn btn-default" @click="compile">Try >></button>
+    </div>
+    <div class="code-col">
+      <codemirror v-model="compiled" :options="jsOption"></codemirror>
     </div>
   </div>
 </div>
@@ -17,6 +23,7 @@
 <script>
 import { Component } from 'vue-property-decorator'
 import Vue from 'vue'
+import Examples from './examples'
 
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
@@ -30,15 +37,10 @@ import 'codemirror/addon/edit/closetag.js'
   components: { codemirror }
 })
 export default class App extends Vue {
-  origin =
-`<div>
-  <div v-for="(dataObj, key) in dict" :key="key">
-    <VueHolder :vars="{dataObj: 'dict[key]'}">
-      <ChildComponent :data="dataObj" />
-    </VueHolder>
-  </div>
-</div>`
+  examples = Examples
+  currentIndex = 2
 
+  template=''
   compiled = ''
 
   htmlOption = {
@@ -56,11 +58,17 @@ export default class App extends Vue {
   }
 
   mounted() {
+    this.load(1);
+  }
+
+  load(index) {
+    this.currentIndex = index;
+    this.template = this.examples[index].template;
     this.compile();
   }
 
   compile() {
-    const compiled = require('vue-template-compiler').compile(this.origin, {
+    const compiled = require('vue-template-compiler').compile(this.template, {
       modules: [{
         postTransformNode: require('vue-component-holder/holdify')()
       }]
@@ -81,13 +89,24 @@ export default class App extends Vue {
 </script>
 
 <style scoped lang="sass">
-.container
+.header
+  padding-left: 20px
+  a
+    cursor: pointer
+    font-size: 16px
+    margin-right: 8px
+.code-row
+  display: flex
+  flex-direction: row
   width: 100%
   padding: 20px
-  .toolbar
+  .code-col
+    width: 47%
+  .button-col
     text-align: center
-  .code-area-row
-    margin-top: 20px
+    width: 6%
+    button
+      margin-top: 35vh
 </style>
 
 <style lang="sass">
