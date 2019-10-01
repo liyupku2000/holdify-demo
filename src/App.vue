@@ -1,10 +1,16 @@
 <template>
 <div>
   <div class="header">
-    <h2>{{examples[currentIndex].title}}</h2>
-    <div class="index-row">
-      <a v-for="(example, index) in examples" :key="example.title" @click="load(index)">{{ index }}</a>
+    <div class="page-index">
+      <div class="index-row">
+        <button v-for="(example, index) in examples" :key="example.title"
+                :class="{selected: index===currentIndex, leftmost: !index, rightmost: index===examples.length-1}"
+                @click="load(index)">
+          {{ index }}
+        </button>
+      </div>
     </div>
+    <div class="title">{{examples[currentIndex].title}}</div>
   </div>
   <div class="code-row">
     <div class="code-col">
@@ -38,7 +44,7 @@ import 'codemirror/addon/edit/closetag.js'
 })
 export default class App extends Vue {
   examples = Examples
-  currentIndex = 2
+  currentIndex = 0
 
   template=''
   compiled = ''
@@ -58,7 +64,7 @@ export default class App extends Vue {
   }
 
   mounted() {
-    this.load(1);
+    this.load(this.currentIndex);
   }
 
   load(index) {
@@ -90,11 +96,37 @@ export default class App extends Vue {
 
 <style scoped lang="sass">
 .header
-  padding-left: 20px
-  a
-    cursor: pointer
-    font-size: 16px
-    margin-right: 8px
+  padding: 20px 0 0 25px
+  .title
+    margin-left: 20px
+    font-weight: bold
+    font-size: 22px
+    float: left
+  .page-index
+    float: left
+    margin-top: 2px
+    border: 1px solid #ccc
+    border-radius: 6px
+    button
+      background: #fff
+      padding: 5px 10px
+      border: 0
+      border-right: 1px solid #ccc
+      border-radius: 0
+      font-size: 13px
+      color: #767676
+    button.selected
+      background: #ddd
+      cursor: default
+      color: #333
+      font-weight: bold
+    button.leftmost
+      border-top-left-radius: 6px
+      border-bottom-left-radius: 6px
+    button.rightmost
+      border-right: 0
+      border-top-right-radius: 6px
+      border-bottom-right-radius: 6px
 .code-row
   display: flex
   flex-direction: row
