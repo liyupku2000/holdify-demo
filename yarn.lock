@@ -7846,10 +7846,10 @@ vue-codemirror@^4.0.6:
     codemirror "^5.41.0"
     diff-match-patch "^1.0.0"
 
-vue-component-holder@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/vue-component-holder/-/vue-component-holder-0.0.2.tgz#34d310f507cb067e42b5b316a3e1d05f838b0336"
-  integrity sha512-O35dUJzchXSAwgbClVv9EsbksBk1JeyjrL8PXsaNytRqdOSnztvN3AZp/28eSVt8KitMN/z7pOcEGT7jh0uSRg==
+vue-component-holder@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/vue-component-holder/-/vue-component-holder-0.0.3.tgz#727e96219868df9f141176939a4cf291e34dfd6a"
+  integrity sha512-XB7clLJ2NeoShd2fKH5tdzb9TI4VLV9cO6TtwkFYYr55xuOlAjPhivvnTIVjal1okrbocR7jKktj7k1UfiVwDA==
   dependencies:
     change-case "^3.1.0"
     vue "^2.6.10"

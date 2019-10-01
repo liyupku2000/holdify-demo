@@ -98,9 +98,9 @@ export default class App extends Vue {
 .header
   padding: 20px 0 0 25px
   .title
-    margin-left: 20px
-    font-weight: bold
-    font-size: 22px
+    margin: 3px 0 0 50px
+    font-weight: 500
+    font-size: 20px
     float: left
   .page-index
     float: left
