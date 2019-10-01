@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { Public } from 'vue-component-holder/decorators'
 import { Component } from 'vue-property-decorator'
 import Vue from 'vue'
 import Examples from './examples'
