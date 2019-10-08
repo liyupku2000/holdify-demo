@@ -7846,13 +7846,14 @@ vue-codemirror@^4.0.6:
     codemirror "^5.41.0"
     diff-match-patch "^1.0.0"
 
-vue-component-holder@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/vue-component-holder/-/vue-component-holder-0.0.4.tgz#108b2423ce1886c383625dbe795159a71f003dbe"
-  integrity sha512-Ue1IBFYY/P52aBYZSrIxGBHvMBtmbkBhpilS9gq00Nr0htwyr+T1U9XlsoG8UOJG2XJqUf9iA1vpOvg9NCybfw==
+vue-component-holder@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/vue-component-holder/-/vue-component-holder-0.0.9.tgz#9986277a911a84aa33d8065cc9ff5493b6a73b6b"
+  integrity sha512-IIqG7auXTHtwALCLsC7SkEtyh9vN4R+v0OR6jaeRoabNknAm0avAGkqaMxY5kCRny6mwp+gFlS/Xa0AavaICNQ==
   dependencies:
     change-case "^3.1.0"
     vue "^2.6.10"
+    vue-class-component "^7.0.2"
     vue-shortkey "^3.1.7"
     vue-template-compiler "^2.6.10"
     vue-template-es2015-compiler "^1.9.1"
